@@ -10,6 +10,7 @@ import br.com.cotiinformatica.api_agenda.exceptions.EmailJaCadastradoException;
 import br.com.cotiinformatica.api_agenda.repositories.UsuarioRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,8 @@ public class UsuarioService {
     /*
         Método para autenticar um usuário no sistema
      */
-    public AutenticarUsuarioResponse autenticarUsuario(AutenticarUsuarioRequest request) throws Exception {
+    public AutenticarUsuarioResponse autenticarUsuario(AutenticarUsuarioRequest request)
+            throws Exception {
 
         //Procurar o usuário no banco de dados através do email
         var usuario = usuarioRepository.findByEmail(request.email());
